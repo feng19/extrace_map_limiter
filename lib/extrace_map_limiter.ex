@@ -18,6 +18,13 @@ defmodule Extrace.MapLimiter do
     Application.put_env(:extrace, :inspect_opts, opts)
   end
 
+  @spec uninstall :: :ok
+  def uninstall do
+    opts = Application.get_env(:extrace, :inspect_opts, pretty: true)
+    opts = Keyword.delete(opts, :inspect_fun)
+    Application.put_env(:extrace, :inspect_opts, opts)
+  end
+
   @spec limit(struct, limit) :: :ok
   def limit(%module{}, limit) do
     :recon_map.limit(module, %{__struct__: module}, limit)
