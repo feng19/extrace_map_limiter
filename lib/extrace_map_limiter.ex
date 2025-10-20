@@ -48,7 +48,7 @@ defmodule Extrace.MapLimiter do
           {_, term} ->
             infos = struct_infos(module, term)
 
-            Inspect.Any.inspect(
+            Inspect.Any.inspect_as_struct(
               term,
               Macro.inspect_atom(:literal, module),
               infos,
@@ -72,7 +72,7 @@ defmodule Extrace.MapLimiter do
   end
 
   defp struct_infos(module, map) do
-    for %{field: field} = info <- module.__info__(:struct),
+    for %{field: field} = info <- List.wrap(module.__info__(:struct)),
         field in Map.keys(map),
         do: info
   end

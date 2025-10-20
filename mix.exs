@@ -1,14 +1,14 @@
 defmodule ExtraceMapLimiter.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.2.0"
   @source_url "https://github.com/feng19/extrace_map_limiter"
 
   def project do
     [
       app: :extrace_map_limiter,
       version: @version,
-      elixir: "~> 1.17",
+      elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
